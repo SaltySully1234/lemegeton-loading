@@ -1,0 +1,199 @@
+/*
+	BEGOTTEN: LEMEGETON - connection screen.
+	Sizes are in rem; loading.js sets 1rem to 1/54 of the window height, so the layout keeps its proportions at
+	any resolution and aspect ratio. Written for both of Garry's Mod's browsers (the old Awesomium of the default
+	branch and Chromium): prefixed transitions and animations, no newer CSS features.
+*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #040202;
+}
+
+html {
+	font-size: 20px;
+}
+
+body {
+	color: #b8aa90;
+	font-family: "Times New Roman", Georgia, "Palatino Linotype", "Book Antiqua", serif;
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+#scene {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#frame {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* The emblem above the seal; it fades in once and then only breathes a little (loading.js). */
+#logo {
+	position: absolute;
+	left: 50%;
+	top: 3.5%;
+	height: 17.5%;
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	opacity: 0;
+	-webkit-transition: opacity 3s ease;
+	transition: opacity 3s ease;
+}
+
+/* Scripture under the seal, one verse at a time. */
+#verse {
+	position: absolute;
+	left: 12%;
+	right: 12%;
+	top: 81.5%;
+	text-align: center;
+	opacity: 0;
+	-webkit-transition: opacity 2.6s ease;
+	transition: opacity 2.6s ease;
+}
+
+#verse-text {
+	font-size: 1.05rem;
+	font-style: italic;
+	letter-spacing: 0.04em;
+	line-height: 1.45;
+	color: #bcae94;
+	text-shadow: 0 0 0.6rem #000, 0 0 0.15rem #000;
+}
+
+#verse-ref {
+	margin-top: 0.45rem;
+	font-size: 0.6rem;
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	color: #7c1a12;
+}
+
+/* Status in the lower margin: what the gate is doing, a thin red thread of progress, the file in hand. */
+#status {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 3%;
+	text-align: center;
+}
+
+#status-word {
+	font-size: 0.72rem;
+	letter-spacing: 0.55em;
+	text-transform: uppercase;
+	color: #9a2016;
+	text-shadow: 0 0 0.5rem rgba(120, 10, 5, 0.55);
+}
+
+#thread {
+	position: relative;
+	width: 30%;
+	height: 1px;
+	margin: 0.55rem auto 0.5rem auto;
+	background: rgba(120, 20, 14, 0.22);
+	overflow: hidden;
+}
+
+#thread-fill {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	background: #a0180e;
+	-webkit-transition: width 0.8s ease-out;
+	transition: width 0.8s ease-out;
+}
+
+/* While the size of the download is unknown, an ember wanders along the thread (a seamless back-and-forth). */
+#thread-spark {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 18%;
+	background: -webkit-linear-gradient(left, rgba(160, 24, 14, 0), rgba(190, 40, 20, 0.9), rgba(160, 24, 14, 0));
+	background: linear-gradient(to right, rgba(160, 24, 14, 0), rgba(190, 40, 20, 0.9), rgba(160, 24, 14, 0));
+	-webkit-animation: lemSpark 7s ease-in-out infinite alternate;
+	animation: lemSpark 7s ease-in-out infinite alternate;
+}
+
+#thread.known #thread-spark {
+	display: none;
+}
+
+@-webkit-keyframes lemSpark {
+	from { left: -18%; }
+	to { left: 100%; }
+}
+
+@keyframes lemSpark {
+	from { left: -18%; }
+	to { left: 100%; }
+}
+
+#status-detail {
+	max-width: 60%;
+	margin: 0 auto;
+	height: 1rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 0.58rem;
+	letter-spacing: 0.14em;
+	color: rgba(170, 158, 136, 0.5);
+}
+
+#server, #map {
+	position: absolute;
+	bottom: 3.4%;
+	font-size: 0.56rem;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: rgba(150, 138, 118, 0.36);
+	max-width: 22%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#server {
+	left: 3%;
+}
+
+#map {
+	right: 3%;
+	text-align: right;
+}
+
+#sound {
+	position: absolute;
+	top: 3%;
+	right: 2.4%;
+	display: none;
+	font-size: 0.8rem;
+	letter-spacing: 0.3em;
+	color: rgba(150, 40, 28, 0.55);
+	cursor: pointer;
+}
+
+#sound:hover {
+	color: rgba(200, 50, 30, 0.85);
+}
